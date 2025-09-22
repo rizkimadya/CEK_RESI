@@ -132,6 +132,34 @@ function App() {
           >
             Cari
           </button>
+
+          {/* 🔹 Tambah tombol Salin Semua disamping tombol Cari */}
+          {results.some((r) => !r.found) && (
+            <button
+              onClick={() => {
+                const notFoundList = results
+                  .filter((r) => !r.found)
+                  .map((r) => r.name)
+                  .join("\n");
+
+                navigator.clipboard.writeText(notFoundList);
+                alert("📋 Semua resi yang tidak ditemukan berhasil disalin!");
+              }}
+              style={{
+                marginTop: "10px",
+                marginLeft: "10px",
+                padding: "8px",
+                backgroundColor: "red",
+                color: "white",
+                marginRight:"10px"
+              }}
+            >
+              📋 Salin Semua Resi Yang Tidak Ditemukan
+            </button>
+          )}
+          <strong>
+            ❌ {results.filter((r) => !r.found).length} resi tidak ditemukan
+          </strong>
         </div>
       )}
 
