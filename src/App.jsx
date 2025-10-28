@@ -64,6 +64,7 @@ function App() {
   return (
     <div style={{ padding: "20px" }}>
       <div style={{ textAlign: "center" }}>
+        {/* <img src="https://download.scidb.cn/download?fileId=a0130796167038c8488833603c3b6a60&path=/V1/Mahindinet/224x224/Fall Armyworm/fall (105).jpg&fileName=fall%20(105).jpg" alt="" /> */}
         <h1>Cari Banyak Nomor Sekaligus</h1>
         <h2>Solusi untuk pabom 💩</h2>
       </div>
@@ -151,7 +152,7 @@ function App() {
                 padding: "8px",
                 backgroundColor: "red",
                 color: "white",
-                marginRight:"10px"
+                marginRight: "10px"
               }}
             >
               📋 Salin Semua Resi Yang Tidak Ditemukan
@@ -165,21 +166,52 @@ function App() {
 
       {loading && <p>Loading...</p>}
 
-      <ul>
-        {results.map((result, idx) => (
-          <li key={idx}>
-            {result.found ? (
-              <>
-                ✅ {result.name} ditemukan — Resi: {result.data.no_resi} — Nomor Pesanan :
-                {result.data.no_pesanan} — Nama: {result.data.nama_lengkap} — Produk:{" "}
-                {result.data.produk} — Status: {result.data.keterangan}
-              </>
-            ) : (
-              <>❌ {result.name} tidak ditemukan di data</>
-            )}
-          </li>
-        ))}
-      </ul>
+      <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "15px" }}>
+        <thead>
+          <tr style={{ backgroundColor: "#f2f2f2", textAlign: "left" }}>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>#</th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Nama</th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Status</th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>No. Resi</th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>No. Pesanan</th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Produk</th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Keterangan</th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Tanggal Order</th>
+          </tr>
+        </thead>
+        <tbody>
+          {results.map((result, idx) => (
+            <tr key={idx}>
+              <td style={{ border: "1px solid #ddd", padding: "8px" }}>{idx + 1}</td>
+              {result.found ? (
+                <>
+                  <td style={{ border: "1px solid #ddd", padding: "8px" }}>{result.data.nama_lengkap}</td>
+                  <td style={{ border: "1px solid #ddd", padding: "8px", color: "green" }}>✅ Ada</td>
+                  <td style={{ border: "1px solid #ddd", padding: "8px" }}>{result.data.no_resi}</td>
+                  <td style={{ border: "1px solid #ddd", padding: "8px" }}>{result.data.no_pesanan}</td>
+                  <td style={{ border: "1px solid #ddd", padding: "8px" }}>{result.data.produk}</td>
+                  <td style={{ border: "1px solid #ddd", padding: "8px" }}>{result.data.keterangan}</td>
+                  <td style={{ border: "1px solid #ddd", padding: "8px" }}>{result.data.tanggal_order}</td>
+                </>
+              ) : (
+                <>
+                  <td
+                    style={{
+                      border: "1px solid #ddd",
+                      padding: "8px",
+                      color: "red",
+                    }}
+                    colSpan="7"
+                  >
+                    ❌ Tidak ditemukan di data
+                  </td>
+                </>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
     </div>
   );
 }
