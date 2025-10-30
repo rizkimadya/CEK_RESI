@@ -175,7 +175,8 @@ function App() {
             <th style={{ border: "1px solid #ddd", padding: "8px" }}>No. Resi</th>
             <th style={{ border: "1px solid #ddd", padding: "8px" }}>No. Pesanan</th>
             <th style={{ border: "1px solid #ddd", padding: "8px" }}>Produk</th>
-            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Keterangan</th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>QTY</th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Harga</th>
             <th style={{ border: "1px solid #ddd", padding: "8px" }}>Tanggal Order</th>
           </tr>
         </thead>
@@ -190,7 +191,10 @@ function App() {
                   <td style={{ border: "1px solid #ddd", padding: "8px" }}>{result.data.no_resi}</td>
                   <td style={{ border: "1px solid #ddd", padding: "8px" }}>{result.data.no_pesanan}</td>
                   <td style={{ border: "1px solid #ddd", padding: "8px" }}>{result.data.produk}</td>
-                  <td style={{ border: "1px solid #ddd", padding: "8px" }}>{result.data.keterangan}</td>
+                  <td style={{ border: "1px solid #ddd", padding: "8px" }}>{result.data.jumlah_barang}</td>
+                  <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                    {"Rp " + Number(result.data.harga_akhir).toLocaleString("id-ID")}
+                  </td>
                   <td style={{ border: "1px solid #ddd", padding: "8px" }}>{result.data.tanggal_order}</td>
                 </>
               ) : (
