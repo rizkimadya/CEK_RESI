@@ -205,7 +205,7 @@ function App() {
                       padding: "8px",
                       color: "red",
                     }}
-                    colSpan="7"
+                    colSpan="8"
                   >
                     ❌ Tidak ditemukan di data
                   </td>
