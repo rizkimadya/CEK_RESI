@@ -129,7 +129,7 @@ function App() {
             onClick={() =>
               handleSearch(searchMode === "resi" ? "no_resi" : "no_pes")
             }
-            style={{ marginTop: "10px", padding: "8px" }}
+            style={{ marginTop: "10px", padding: "8px 30px", backgroundColor:"green", color:"white", marginRight:"10px" }}
           >
             Cari
           </button>
@@ -203,11 +203,10 @@ function App() {
                     style={{
                       border: "1px solid #ddd",
                       padding: "8px",
-                      color: "red",
                     }}
                     colSpan="8"
                   >
-                    ❌ Tidak ditemukan di data
+                      ❌ <b>{result.name}</b>  tidak ditemukan 
                   </td>
                 </>
               )}
